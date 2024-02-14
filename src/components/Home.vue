@@ -1,36 +1,3 @@
-<script lang="ts" setup>
-import {
-  ref,
-  computed,
-  onMounted,
-  onUnmounted,
-  $navigateTo
-} from 'nativescript-vue';
-import Details from './Details.vue';
-import Funnel from './Funnel.vue';
-import Blog from './Blog.vue';
-
-const counter = ref(0);
-// const message = computed(() => {
-//   return `Spam counter: ${counter.value}`;
-// });
-
-function logMessage() {
-  console.log('Tap!');
-}
-
-let interval: any;
-onMounted(() => {
-  console.log('mounted');
-  interval = setInterval(() => counter.value++, 100);
-});
-
-onUnmounted(() => {
-  console.log('unmounted');
-  clearInterval(interval);
-});
-</script>
-
 <template>
   <Frame>
     <Page>
@@ -43,28 +10,22 @@ onUnmounted(() => {
             height="40"
             verticalAlignment="center"
           />
+            <Label text="Welcome to" class="font-bold text-lg" />
           <Label text="space!" class="font-bold text-lg" />
         </StackLayout>
       </ActionBar>
       <StackLayout backgroundColor="#edf3f7" class="px-2">
-        <!-- <Label
-          height="70"
-          class="text-xl align-middle text-center text-gray-500"
-          :text="message"
-          @tap="logMessage"
-        /> -->
         <Button
           height="50"
-          @tap="$navigateTo(Details)"
-          class="px-4 py-2 bg-white text-black border-2 border-grey-400 rounded-lg"
-          @tap="logMessage"
+          @tap="navigateTo('>>> Home to Details', Details)"
+          class="mt-5 px-4 py-2 bg-white text-black border-2 border-grey-400 rounded-lg"
         >
           Animal list
         </Button>
 
         <Button
           height="50"
-          @tap="$navigateTo(Funnel)"
+          @tap="navigateTo('>>> Home to Funnel', Funnel)"
           class="px-4 py-2 mt-5 bg-white text-black border-2 border-grey-400 rounded-lg"
         >
           Funnel
@@ -72,7 +33,7 @@ onUnmounted(() => {
 
         <Button
           height="50"
-          @tap="$navigateTo(Blog)"
+          @tap="navigateTo('>>> Home to Blog', Blog)"
           class="px-4 py-2 mt-5 bg-white text-black border-2 border-grey-400 rounded-lg"
         >
           Blog
@@ -82,8 +43,36 @@ onUnmounted(() => {
   </Frame>
 </template>
 
+<script lang="ts" setup>
+import {
+  ref,
+  computed,
+  onMounted,
+  onUnmounted,
+  $navigateTo
+} from 'nativescript-vue';
+import Details from './Details.vue';
+import Funnel from './Funnel.vue';
+import Blog from './Blog.vue';
+
+function logTapping(source) {
+  console.log('tap!', source);
+}
+
+function navigateTo(source, target) {
+  logTapping(source);
+  $navigateTo(target);
+}
+
+onMounted(() => {
+  console.log('mounted');
+});
+
+onUnmounted(() => {
+  console.log('unmounted');
+});
+</script>
+
 <style>
-/* .info {
-    font-size: 20;
-  } */
+  
 </style>

@@ -13,7 +13,7 @@ function navigateBack(source) {
 <template>
   <Page backgroundColor="#519f7d">
     <ActionBar backgroundColor="#f7f7f7">
-      <Label text="Funnel" class="text-center text-md text-black"></Label>
+      <Label text="Mon compte" class="text-center text-md text-black"></Label>
     </ActionBar>
 
     <ContentView
@@ -24,7 +24,7 @@ function navigateBack(source) {
       <WebView
         height="700"
         class="mt-2"
-        src="https://assurance.santevet.com/quote-species?_gl=1%2aiapr8h%2a_ga%2aODE5MzYyOTA3LjE3MDc4MzEyODg.%2a_ga_1RVXB9VC2D%2aMTcwNzgzMTI4OC4xLjEuMTcwNzgzMjk0Mi41OC4wLjA."
+        src="https://espaceclient.santevet.com/login"
       />
     </ContentView>
   </Page>
